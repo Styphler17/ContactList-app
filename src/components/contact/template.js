@@ -1,4 +1,3 @@
-//template Contact début (✅ spans remis)
 export function getContactTemplate(contact) {
   return `<tr data-id="${contact.id}">
         <td class="p-4">
@@ -28,4 +27,3 @@ export function getContactTemplate(contact) {
         </td>
     </tr>`
 }
-//template Contact fin

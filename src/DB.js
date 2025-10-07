@@ -1,4 +1,3 @@
-// class DB
 export default class DB  {
   static setApiURL(data) {
     this.apiURL = data
@@ -27,7 +26,6 @@ export default class DB  {
     return res.json()
   }
 
-  // GET /firstname/:id
   static async findById(id) {
     const res = await fetch(this.apiURL + '/' + id, {
 
@@ -36,7 +34,6 @@ export default class DB  {
     return res.json()
   }
 
-  // PUT /firstname/:id
   static async findByIdAndUpdate(id, partial) {
     const res = await fetch(this.apiURL + '/' + id, {
 

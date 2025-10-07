@@ -1,22 +1,17 @@
-/* Alternance de lignes */
 .contacts-table tbody tr:nth-of-type(even) {
-  background: #f9fafb; /* Gray 50 */
+  background: #f9fafb;
 }
 
-/* État "normal" (= pas en édition) : cacher ce qui est visible en édition */
 .contacts-table tr:not(.isEditing) .isEditing-visible {
   display: none;
 }
-/* État "normal" : afficher le contenu lecture seule */
 .contacts-table tr:not(.isEditing) .isEditing-hidden {
   display: inline;
 }
 
-/* État "édition" : montrer les éléments d'édition */
 .contacts-table tr.isEditing .isEditing-visible {
-  display: inline-block; /* ou inline-flex selon ton rendu */
+  display: inline-block;
 }
-/* État "édition" : cacher les spans */
 .contacts-table tr.isEditing .isEditing-hidden {
   display: none;
 }

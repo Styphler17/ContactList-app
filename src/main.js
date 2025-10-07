@@ -5,5 +5,4 @@ const contactList = new Contactlist({
   elt: "#app",
   apiURL: "https://68e45a248e116898997b9df1.mockapi.io/firstname/",
 });
-// exposer l’instance pour delete
 window.contactList = contactList;

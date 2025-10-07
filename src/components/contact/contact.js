@@ -1,6 +1,6 @@
 import DB from '../../DB.js';
 import { getContactTemplate } from './template.js';
-// class Contact début
+
 export default class Contact {
   constructor(data) {
     this.id = data.id
@@ -13,9 +13,7 @@ export default class Contact {
     return getContactTemplate(this)
   }
 
-  // Événements: edit  GET + entrer en édition
   initevent(){
-    // Edit
     this.domElt.querySelector('.btn-edit')?.addEventListener('click', async (e) => {
       e.preventDefault()
       const fresh = await DB.findById(this.id)
@@ -30,7 +28,6 @@ export default class Contact {
       this.domElt.classList.add('isEditing')
     })
 
-    // Save (UPDATE)
     this.domElt.querySelector('.btn-check')?.addEventListener('click', async (e) => {
       e.preventDefault()
       const inputFirst = this.domElt.querySelector('.input-firstname')
@@ -45,12 +42,10 @@ export default class Contact {
 
       const updated = await DB.findByIdAndUpdate(this.id, payload)
 
-      // maj locales
       this.firstname = updated.firstname ?? payload.firstname
       this.lastname  = updated.lastname  ?? payload.lastname
       this.email     = updated.email     ?? payload.email
 
-      // maj DOM (spans + inputs) sans re-render
       const spanFirst = this.domElt.querySelector('td:nth-child(1) .isEditing-hidden')
       const spanLast  = this.domElt.querySelector('td:nth-child(2) .isEditing-hidden')
       const spanEmail = this.domElt.querySelector('td:nth-child(3) .isEditing-hidden')
@@ -61,11 +56,9 @@ export default class Contact {
       if (inputLast)  inputLast.value  = this.lastname
       if (inputEmail) inputEmail.value = this.email
 
-      // sortir du mode édition
       this.domElt.classList.remove('isEditing')
     })
 
-    // Delete
     this.domElt.querySelector('.destroy')?.addEventListener('click', (e) => {
       e.preventDefault()
       window.contactList?.findByIdAndRemove?.(this.id)
